@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/Ania/AndroidStudioProjects/StretchYOURBody/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Ania/AndroidStudioProjects/StretchYOURBody/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/Users/Ania/AndroidStudioProjects/StretchYOURBody/app/src/main/res/layout/fragment_training.xml" value="0.25" />
+        <entry key="..\:/Users/Ania/AndroidStudioProjects/StretchYOURBody/app/src/main/res/layout/fragment_training_list.xml" value="0.2359375" />
+        <entry key="..\:/Users/Ania/AndroidStudioProjects/StretchYOURBody/app/src/main/res/layout/fragment_training_list_list.xml" value="0.2359375" />
       </map>
     </option>
   </component>
