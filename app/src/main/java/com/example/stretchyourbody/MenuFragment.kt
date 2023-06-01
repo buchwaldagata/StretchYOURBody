@@ -11,7 +11,7 @@ import com.example.stretchyourbody.databinding.FragmentFirstBinding
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class MenuFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
@@ -23,6 +23,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        return null
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root

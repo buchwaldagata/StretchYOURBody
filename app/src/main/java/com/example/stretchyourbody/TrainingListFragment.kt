@@ -1,17 +1,19 @@
 package com.example.stretchyourbody
 
 import android.R
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.fragment.app.ListFragment
 
 class TrainingListFragment : ListFragment() {
     val trainings: TrainingsList = TrainingsList()
     var trainingNames = trainings.getAllTrainingsNames()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,19 +27,14 @@ class TrainingListFragment : ListFragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    internal interface Listener {
-        fun itemClicked(id: Long)
+    override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
+        Log.e("lista", "position " + position.toString())
+        Log.e("lista", trainingNames[position])
+
+        val trainingName = trainingNames[position]
+        val intent = Intent(activity, TrainingActivity::class.java)
+        intent.putExtra("trainingName", trainingName)
+        startActivity(intent)
     }
 
-    private var listener: Listener? = null
-//    fun onAttach(context: Context?) {
-//        super.onAttach(context!!)
-//        listener = context as Listener?
-//    }
-//
-//    fun onListItemClick(listView: ListView?, itemView: View?, position: Int, id: Long) {
-//        if (listener != null) {
-//            listener!!.itemClicked(id)
-//        }
-//    }
 }
