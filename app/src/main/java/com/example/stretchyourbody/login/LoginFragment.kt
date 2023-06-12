@@ -1,4 +1,4 @@
-package com.example.stretchyourbody
+package com.example.stretchyourbody.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -11,10 +11,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/signInTitle"
+            android:id="@+id/signUpTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zaloguj się"
+            android:text="Zarejestruj się"
             android:textSize = "35dp"
             android:textStyle = "bold"
             android:gravity="center"
@@ -48,6 +48,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="20dp"
+                    android:id="@+id/email"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:hint="Email" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp"
                     android:id="@+id/password"
                     >
 
@@ -59,23 +76,34 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp"
+                    android:id="@+id/password2"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:hint="Powtórz hasło" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
                 <Button
-                    android:id="@+id/zalogujButton"
+                    android:id="@+id/zarejestrujButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Zaloguj"
+                    android:text="Zarejestruj"
                     android:layout_margin = "40dp"
                     />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/zarejestrujButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Zarejestruj"
-            android:layout_margin = "70dp"/>
 
     </LinearLayout>
 

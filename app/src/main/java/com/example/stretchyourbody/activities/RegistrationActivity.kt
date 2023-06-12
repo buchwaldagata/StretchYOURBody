@@ -1,8 +1,9 @@
-package com.example.stretchyourbody
+package com.example.stretchyourbody.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.stretchyourbody.R
 import com.google.firebase.auth.FirebaseAuth
 
 class RegistrationActivity : AppCompatActivity() {
