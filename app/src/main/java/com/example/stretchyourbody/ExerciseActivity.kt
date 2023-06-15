@@ -18,6 +18,7 @@ class ExerciseActivity : AppCompatActivity() {
     lateinit var exercises: MutableList<Exercise>
     var index by Delegates.notNull<Int>()
 
+
     private val imageView:ImageView
         get() = findViewById(R.id.exercise_image)
     private val timeView: TextView

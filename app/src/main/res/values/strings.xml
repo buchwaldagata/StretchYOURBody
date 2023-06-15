@@ -17,4 +17,6 @@
     <string name="stoper_start">Start</string>
     <string name="stoper_stop">Pauza</string>
     <string name="stoper_reset">Reset</string>
+
+    <string name="select_exercise">Wybierz ćwiczenie</string>
 </resources>
