@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, navigate to the Main Activity
-                    val intent = Intent(this, MainActivity2::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
 //                    Toast.makeText(baseContext, "Zalogowano", Toast.LENGTH_SHORT).show()

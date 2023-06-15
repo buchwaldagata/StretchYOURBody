@@ -1,6 +1,7 @@
 package com.example.stretchyourbody
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,7 +10,12 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
+import androidx.lifecycle.MutableLiveData
+import com.example.stretchyourbody.data.User
 import com.example.stretchyourbody.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +24,41 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
+        var objectUser: User? = null
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val firebaseFirestore = FirebaseFirestore.getInstance()
+
+
+        val cloudResult = MutableLiveData<User?>()
+        val uid = firebaseAuth.currentUser?.uid
+
+        firebaseFirestore.collection("users")
+            .document(uid!!)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+
+                if (querySnapshot.id == uid ){
+                    objectUser = querySnapshot.toObject(User::class.java)
+                    if (objectUser != null) {
+                        Log.d("WYPIS", objectUser!!.email.toString())
+                    }
+                }
+
+//                val textView = findViewById<TextView>(R.id.textView2)
+//                textView.text = objectUser!!.treningi.toString()
+
+
+
+            }
+            .addOnFailureListener{
+                Log.d("REPO_DEBUG", it.message.toString())
+            }
+
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

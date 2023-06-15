@@ -15,49 +15,49 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class MainActivity2 : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        var objectUser: User? = null
-
-        setContentView(R.layout.activity_main2)
-
-        val firebaseAuth = FirebaseAuth.getInstance()
-        val firebaseFirestore = FirebaseFirestore.getInstance()
-
-
-        val cloudResult = MutableLiveData<User?>()
-        val uid = firebaseAuth.currentUser?.uid
-
-        firebaseFirestore.collection("users")
-//            .whereEqualTo()
-            .document(uid!!)
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-
-                    if (querySnapshot.id == uid ){
-                         objectUser = querySnapshot.toObject(User::class.java)
-                        if (objectUser != null) {
-                            Log.d("WYPIS", objectUser!!.email.toString())
-                        }
-                    }
-
-                val textView = findViewById<TextView>(R.id.textView2)
-                textView.text = objectUser!!.email.toString()
-
-
-
-
-
-
-
-
-
-//                val user = it.toObject(User::class.java)
-//                cloudResult.postValue(user)
-            }
-            .addOnFailureListener{
-                Log.d("REPO_DEBUG", it.message.toString())
-            }
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        var objectUser: User? = null
+//
+//        setContentView(R.layout.activity_main2)
+//
+//        val firebaseAuth = FirebaseAuth.getInstance()
+//        val firebaseFirestore = FirebaseFirestore.getInstance()
+//
+//
+//        val cloudResult = MutableLiveData<User?>()
+//        val uid = firebaseAuth.currentUser?.uid
+//
+//        firebaseFirestore.collection("users")
+////            .whereEqualTo()
+//            .document(uid!!)
+//            .get()
+//            .addOnSuccessListener { querySnapshot ->
+//
+//                    if (querySnapshot.id == uid ){
+//                         objectUser = querySnapshot.toObject(User::class.java)
+//                        if (objectUser != null) {
+//                            Log.d("WYPIS", objectUser!!.email.toString())
+//                        }
+//                    }
+//
+//                val textView = findViewById<TextView>(R.id.textView2)
+//                textView.text = objectUser!!.treningi.toString()
+//
+//
+//
+//
+//
+//
+//
+//
+//
+////                val user = it.toObject(User::class.java)
+////                cloudResult.postValue(user)
+//            }
+//            .addOnFailureListener{
+//                Log.d("REPO_DEBUG", it.message.toString())
+//            }
+//    }
 }
