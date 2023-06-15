@@ -22,7 +22,7 @@ class TrainingListFragment : ListFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        user = arguments?.getSerializable("test") as User?
+        user = arguments?.getSerializable("user") as User?
         trainings = user?.treningi ?: listOf()
 
         trainings.forEach {
@@ -39,12 +39,8 @@ class TrainingListFragment : ListFragment() {
     }
 
     override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
-        Log.e("lista", "position" + position.toString())
-        Log.e("lista", trainingNames[position])
-
-        val trainingName = trainingNames[position]
         val intent = Intent(activity, TrainingStartActivity::class.java)
-        intent.putExtra("trainingName", trainingName)
+        intent.putExtra("training", trainings.get(position))
         startActivity(intent)
     }
 

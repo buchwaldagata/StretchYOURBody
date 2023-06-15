@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
                         val fragment = TrainingListFragment()
                         val args = Bundle()
-                        args.putSerializable("test", objectUser)
+                        args.putSerializable("user", objectUser)
                         fragment.arguments = args
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.training_list_container, fragment)
