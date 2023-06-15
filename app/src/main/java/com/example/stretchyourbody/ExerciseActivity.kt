@@ -8,14 +8,16 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.stretchyourbody.data.Cwiczenie
+import com.example.stretchyourbody.data.Trening
 import kotlin.properties.Delegates
 
 class ExerciseActivity : AppCompatActivity() {
     var seconds by Delegates.notNull<Int>()
     private var running = true
     private var wasRunning = false
-    lateinit var trainingName: String
-    lateinit var exercises: MutableList<Exercise>
+    lateinit var training: Trening
+    lateinit var exercises: List<Cwiczenie>
     var index by Delegates.notNull<Int>()
 
 
@@ -36,17 +38,12 @@ class ExerciseActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val trainings = TrainingsList()
-        trainingName = intent.getStringExtra("trainingName").toString()
+        training = intent.getSerializableExtra("training") as Trening
         index = (intent.getStringExtra("exerciseIndex")?.toInt())!!
-        var training: Training = trainings.getTraining(trainingName)!!
-        exercises = training.getExercises()
-        var exercise: Exercise = exercises[index]
-        var time: Int = training.getExerciseTime(index)
+        exercises = training.cwiczenia
+        var exercise: Cwiczenie = exercises[index]
+        var time: Int = exercise.czasCwiczenia!!
         seconds = time
-
-        Log.e("stoper", training.toString())
-        Log.e("stoper", exercise.getTitle())
 
         setContentView(R.layout.activity_exercise)
         startButton.setOnClickListener { running = true }
@@ -56,9 +53,9 @@ class ExerciseActivity : AppCompatActivity() {
             seconds = time
         }
 
-        imageView.setImageResource(exercise.getImage())
-        titleView.setText(exercise.getTitle())
-        descriptionView.setText(exercise.getDescription())
+        imageView.setImageResource(Images.images.get(index%Images.images.size))
+        titleView.setText(exercise.nazwaCwiczenia)
+//        descriptionView.setText(exercise.)
 
 
         super.onCreate(savedInstanceState)
@@ -109,7 +106,7 @@ class ExerciseActivity : AppCompatActivity() {
     private fun newExercise() {
         if (index < exercises.size - 1) {
             val intent = Intent(this, ExerciseActivity::class.java)
-            intent.putExtra("trainingName", trainingName)
+            intent.putExtra("training", training)
             intent.putExtra("exerciseIndex", (index+1).toString())
             startActivity(intent)
         } else {

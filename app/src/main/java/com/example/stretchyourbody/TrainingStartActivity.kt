@@ -60,7 +60,7 @@ class TrainingStartActivity : AppCompatActivity() {
         startButton.setOnClickListener {
 //            Log.i("AAA", training.getTitle())
             val intent = Intent(this, ExerciseActivity::class.java)
-//            intent.putExtra("trainingName", training.getTitle())
+            intent.putExtra("training", training)
             intent.putExtra("exerciseIndex", "0")
             startActivity(intent)
         }
