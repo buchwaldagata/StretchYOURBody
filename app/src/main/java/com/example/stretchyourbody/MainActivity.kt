@@ -48,6 +48,14 @@ class MainActivity : AppCompatActivity() {
                     objectUser = querySnapshot.toObject(User::class.java)
                     if (objectUser != null) {
                         Log.d("WYPIS", objectUser!!.email.toString())
+
+                        val fragment = TrainingListFragment()
+                        val args = Bundle()
+                        args.putSerializable("test", objectUser)
+                        fragment.arguments = args
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.training_list_container, fragment)
+                            .commit()
                     }
                 }
 
@@ -73,6 +81,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddTrainingActivity::class.java)
             startActivity(intent)
         }
+
+
 
     }
 

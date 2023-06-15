@@ -24,6 +24,8 @@ class TrainingListFragment : ListFragment() {
             inflater.context, R.layout.simple_list_item_1, trainingNames
         )
         listAdapter = adapter
+
+        val data = arguments?.getSerializable("test")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
