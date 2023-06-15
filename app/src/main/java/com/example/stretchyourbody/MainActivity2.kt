@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.stretchyourbody.data.User
@@ -41,6 +42,8 @@ class MainActivity2 : AppCompatActivity() {
                         }
                     }
 
+                val textView = findViewById<TextView>(R.id.textView2)
+                textView.text = objectUser!!.email.toString()
 
 
 
