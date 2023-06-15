@@ -3,7 +3,9 @@ package com.example.stretchyourbody
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class AddExercisesToTrainingActivity : AppCompatActivity() {
@@ -18,7 +20,20 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         get() = findViewById(R.id.buttonAddExercise)
     private val buttonFinish:Button
         get() = findViewById(R.id.buttonFinish)
+    private val buttonAddCustomExercise:Button
+        get() = findViewById(R.id.buttonAddCustomExercise)
+    private val buttonSaveCustomExercise:Button
+        get() = findViewById(R.id.buttonSaveCustomExercise)
+    private val editTextCustomExerciseDescription:EditText
+        get() = findViewById(R.id.editTextCustomExerciseDescription)
+    private val editTextCustomExerciseTitle:EditText
+        get() = findViewById(R.id.editTextCustomExerciseTitle)
+    private val imageViewCustomExercise:ImageView
+        get() = findViewById(R.id.imageViewCustomExercise)
+    private val customExerciseLayout: LinearLayout
+        get() = findViewById(R.id.customExerciseLayout)
     private val exercisesList = ExercisesList()
+    private var isCustomExerciseFormVisible = false
 
 
     private lateinit var training: Training
@@ -37,22 +52,46 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         training = Training(name, duration, description)
 
         buttonAddExercise.setOnClickListener {
-            addExercise()
+            if (validateFields()) {
+                addExercise()
+            } else {
+                showAlertDialog("Uzupełnij wszystkie pola!")
+            }
         }
 
         buttonFinish.setOnClickListener {
-            finishAddingTraining()
+            if (training.getExercises().isEmpty()) {
+                showAlertDialog("Dodaj co najmniej jedno ćwiczenie!")
+            } else {
+                finishAddingTraining()
+            }
         }
 
-        val exerciseNames = exercisesList.getAllExercisesNames()
+        setupSpinner()
 
-// Utwórz adapter dla Spinnera
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, exerciseNames)
+//        imageViewCustomExercise.setOnClickListener {
+//
+//        }
+
+        buttonAddCustomExercise.setOnClickListener {
+            toggleCustomExerciseForm()
+        }
+
+        buttonSaveCustomExercise.setOnClickListener {
+            saveCustomExercise()
+        }
+
+    }
+
+    private fun setupSpinner() {
+        val exerciseList = exercisesList.getAllExercisesNames().toMutableList()
+        exerciseList.add(0, "Wybierz ćwiczenie")
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, exerciseList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-// Ustaw adapter dla Spinnera
         spinnerExercises.adapter = adapter
     }
+
 
     private fun addExercise() {
         val exerciseName = spinnerExercises.selectedItem.toString()
@@ -81,6 +120,9 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         row.addView(removeButton)
 
         tableLayoutExercises.addView(row)
+
+        editTextExerciseDuration.text.clear()
+        setupSpinner()
     }
 
     private fun removeExercise(row: TableRow) {
@@ -93,12 +135,6 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
     }
 
     private fun finishAddingTraining() {
-        // Przekazanie obiektu Training do kolejnej aktywności lub innego miejsca w aplikacji
-        // Możesz dostosować działanie w zależności od potrzeb
-        // Przykład przekazania obiektu do nowej aktywności:
-//        val intent = Intent(this, NextActivity::class.java)
-//        intent.putExtra("training", training)
-//        startActivity(intent)
         Log.e("dodawanie", "dziala")
         val trainings: TrainingsList = TrainingsList()
         trainings.addTraining(training)
@@ -106,5 +142,53 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
+    private fun validateFields(): Boolean {
+        val exerciseDuration = editTextExerciseDuration.text.toString().trim()
+        val exerciseName = spinnerExercises.selectedItem.toString()
+
+        return (exerciseDuration.isNotEmpty() && exerciseName != "Wybierz ćwiczenie")
+    }
+
+    private fun showAlertDialog(message: String) {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setMessage(message)
+        alertDialogBuilder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
+
+
+    private fun toggleCustomExerciseForm() {
+        if (isCustomExerciseFormVisible) {
+            customExerciseLayout.visibility = View.GONE
+            isCustomExerciseFormVisible = false
+        } else {
+            customExerciseLayout.visibility = View.VISIBLE
+            isCustomExerciseFormVisible = true
+        }
+    }
+
+    private fun saveCustomExercise() {
+        val exerciseTitle = editTextCustomExerciseTitle.text.toString()
+        val exerciseDescription = editTextCustomExerciseDescription.text.toString()
+
+        if (exerciseTitle.isNotEmpty() && exerciseDescription.isNotEmpty()) {
+            val exercise = Exercise(exerciseTitle, exerciseDescription, R.drawable.default_img)
+            exercisesList.addExercise(exercise)
+            setupSpinner()
+            editTextCustomExerciseTitle.text.clear()
+            editTextCustomExerciseDescription.text.clear()
+            customExerciseLayout.visibility = View.GONE
+            isCustomExerciseFormVisible = false
+            Toast.makeText(this, "Dodano własne ćwiczenie", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Uzupełnij wszystkie pola", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
 }
 
