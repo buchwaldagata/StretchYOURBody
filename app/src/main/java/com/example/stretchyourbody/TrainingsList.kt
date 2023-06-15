@@ -1,5 +1,7 @@
 package com.example.stretchyourbody
 
+import com.example.stretchyourbody.data.User
+
 class TrainingsList {
     val trainings: ArrayList<Training> = ArrayList()
 
@@ -31,4 +33,5 @@ class TrainingsList {
         }
         return null
     }
+
 }

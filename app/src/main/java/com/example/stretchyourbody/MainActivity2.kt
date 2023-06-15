@@ -16,6 +16,9 @@ import com.google.firebase.ktx.Firebase
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var objectUser: User? = null
+
         setContentView(R.layout.activity_main2)
 
         val firebaseAuth = FirebaseAuth.getInstance()
@@ -24,25 +27,31 @@ class MainActivity2 : AppCompatActivity() {
 
         val cloudResult = MutableLiveData<User?>()
         val uid = firebaseAuth.currentUser?.uid
-//        val db = Firebase.firestore
-
-
-//        if (uid != null) {
-
-        // Tutaj możesz użyć pobranego UID użytkownika
-//            val docRef = db.collection("users").document(uid)
-
-//            docRef.get().addOnSuccessListener { documentSnapshot ->
-//                val city = documentSnapshot.toObject<User>()
-//                val napis = "Przykładowy napis"
-//            }
 
         firebaseFirestore.collection("users")
+//            .whereEqualTo()
             .document(uid!!)
             .get()
-            .addOnSuccessListener {
-                val user = it.toObject(User::class.java)
-                cloudResult.postValue(user)
+            .addOnSuccessListener { querySnapshot ->
+
+                    if (querySnapshot.id == uid ){
+                         objectUser = querySnapshot.toObject(User::class.java)
+                        if (objectUser != null) {
+                            Log.d("WYPIS", objectUser!!.email.toString())
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+
+//                val user = it.toObject(User::class.java)
+//                cloudResult.postValue(user)
             }
             .addOnFailureListener{
                 Log.d("REPO_DEBUG", it.message.toString())
