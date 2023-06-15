@@ -44,13 +44,13 @@ class TrainingStartActivity : AppCompatActivity() {
         setImage(currentPosition)
 
         nextButton.setOnClickListener {
-            currentPosition = (currentPosition + 1) % exercises.size
+            currentPosition = (currentPosition + 1) % Images.images.size
             setImage(currentPosition)
         }
 
         previousButton.setOnClickListener {
             currentPosition = if (currentPosition == 0) {
-                exercises.size - 1
+                Images.images.size - 1
             } else {
                 currentPosition - 1
             }
@@ -68,8 +68,8 @@ class TrainingStartActivity : AppCompatActivity() {
     }
 
     private fun setImage(position: Int) {
-        if (exercises.size > 0) {
-            imageView.setImageResource(R.drawable.ex1)
+        if (Images.images.size > 0) {
+            imageView.setImageResource(Images.images.get(position))
         }
     }
 
