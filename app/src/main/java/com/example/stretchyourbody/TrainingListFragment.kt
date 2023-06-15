@@ -38,14 +38,14 @@ class TrainingListFragment : ListFragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-//    override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
-//        Log.e("lista", "position " + position.toString())
-//        Log.e("lista", trainingNames[position])
-//
-//        val trainingName = trainingNames[position]
-//        val intent = Intent(activity, TrainingStartActivity::class.java)
-//        intent.putExtra("trainingName", trainingName)
-//        startActivity(intent)
-//    }
+    override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
+        Log.e("lista", "position" + position.toString())
+        Log.e("lista", trainingNames[position])
+
+        val trainingName = trainingNames[position]
+        val intent = Intent(activity, TrainingStartActivity::class.java)
+        intent.putExtra("trainingName", trainingName)
+        startActivity(intent)
+    }
 
 }
