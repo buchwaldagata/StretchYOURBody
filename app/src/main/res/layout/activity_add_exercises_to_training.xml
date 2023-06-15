@@ -20,7 +20,8 @@
             android:id="@+id/editTextExerciseDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Czas trwania ćwiczenia (minuty)"
+            android:hint="Czas trwania ćwiczenia (sekundy)"
+            android:inputType="number"
             android:minHeight="48dp" />
 
         <Button
@@ -28,6 +29,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dodaj ćwiczenie" />
+
+        <LinearLayout
+            android:id="@+id/customExerciseLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/editTextCustomExerciseTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tytuł ćwiczenia" />
+
+            <EditText
+                android:id="@+id/editTextCustomExerciseDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Opis ćwiczenia" />
+
+            <ImageView
+                android:id="@+id/imageViewCustomExercise"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/default_img"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/buttonSaveCustomExercise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zapisz ćwiczenie" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonAddCustomExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dodaj własne ćwiczenie" />
+
 
         <TableLayout
             android:id="@+id/tableLayoutExercises"
