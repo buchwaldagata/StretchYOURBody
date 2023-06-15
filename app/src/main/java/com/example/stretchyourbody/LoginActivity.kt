@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
-                    Toast.makeText(baseContext, "Zalogowano", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(baseContext, "Zalogowano", Toast.LENGTH_SHORT).show()
 
                 } else {
                     // If sign in fails, display a message to the user.
