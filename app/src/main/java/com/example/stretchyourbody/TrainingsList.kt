@@ -9,9 +9,9 @@ class TrainingsList {
         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
         trainings.add(Training("Drugi trening", 30, "opis drugiego treningu"))
         trainings.add(Training("Trzeci trening", 30, "opis trzeciego treningu"))
-        trainings[0].addExercise(Exercise("ćwiczenie 1", "opis", R.drawable.ex1), 10)
-        trainings[0].addExercise(Exercise("ćwiczenie 2", "opis", R.drawable.ex2), 10)
-        trainings[0].addExercise(Exercise("ćwiczenie 3", "opis", R.drawable.ex3), 10)
+        trainings[0].addExercise(Exercise("ćwiczenie 1", "opis", R.drawable.ex1), 3)
+        trainings[0].addExercise(Exercise("ćwiczenie 2", "opis", R.drawable.ex2), 5)
+        trainings[0].addExercise(Exercise("ćwiczenie 3", "opis", R.drawable.ex3), 2)
     }
 
 

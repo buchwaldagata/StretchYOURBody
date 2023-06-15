@@ -32,7 +32,7 @@ class TrainingListFragment : ListFragment() {
         Log.e("lista", trainingNames[position])
 
         val trainingName = trainingNames[position]
-        val intent = Intent(activity, TrainingActivity::class.java)
+        val intent = Intent(activity, TrainingStartActivity::class.java)
         intent.putExtra("trainingName", trainingName)
         startActivity(intent)
     }

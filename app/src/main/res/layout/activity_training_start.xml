@@ -5,16 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrainingActivity"
+    tools:context=".TrainingStartActivity"
     android:orientation="vertical">
 
+    <!--    android:onClick="onClickDone"-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/start_button"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="32dp" />
-<!--    android:onClick="onClickDone"-->
+        android:layout_margin="40dp"
+        android:src="@drawable/play_img" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -30,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/training_name"
+                android:gravity="center"
                 style="@style/HeaderView"
                 android:text="Tu powinna wyświetlić się nazwa treningu"/>
 
