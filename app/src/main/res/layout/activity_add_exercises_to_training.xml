@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinnerExercises"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="32dp"
+            android:prompt="@string/select_exercise" />
+
+        <EditText
+            android:id="@+id/editTextExerciseDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Czas trwania ćwiczenia (minuty)"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/buttonAddExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dodaj ćwiczenie" />
+
+        <TableLayout
+            android:id="@+id/tableLayoutExercises"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <!-- Nagłówki kolumn -->
+            <TableRow>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nazwa ćwiczenia" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Czas trwania" />
+            </TableRow>
+
+            <!-- Dynamiczne wiersze z danymi ćwiczeń -->
+            <!-- Wypełniane programowo -->
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/buttonFinish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zakończ" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
