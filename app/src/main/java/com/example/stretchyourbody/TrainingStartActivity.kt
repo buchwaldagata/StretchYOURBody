@@ -1,15 +1,16 @@
 package com.example.stretchyourbody
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class TrainingActivity : AppCompatActivity() {
+class TrainingStartActivity : AppCompatActivity() {
     private lateinit var training: Training
     val trainings: TrainingsList = TrainingsList()
     private val imageView:ImageView
@@ -18,18 +19,15 @@ class TrainingActivity : AppCompatActivity() {
         get() = findViewById(R.id.nextButton)
     private val previousButton:Button
         get() = findViewById(R.id.previousButton)
+    private val startButton:FloatingActionButton
+        get() = findViewById(R.id.startButton)
 
-//    private val imageList = listOf(
-//        R.drawable.ex1,
-//        R.drawable.ex2,
-//        R.drawable.ex3,
-//    )
     private var exercises = mutableListOf<Exercise>()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_training)
+        setContentView(R.layout.activity_training_start)
         training = trainings.getTraining(intent.getStringExtra("trainingName").toString())!!
 
         exercises = training.getExercises()
@@ -57,6 +55,17 @@ class TrainingActivity : AppCompatActivity() {
             setImage(currentPosition)
         }
 
+        startButton.setOnClickListener {
+            Log.i("AAA", training.getTitle())
+//            val intent = Intent(this, TrainingActivity::class.java)
+//            intent.putExtra("trainingName", training.getTitle())
+//            startActivity(intent)
+            val intent = Intent(this, ExerciseActivity::class.java)
+            intent.putExtra("trainingName", training.getTitle())
+            intent.putExtra("exerciseIndex", "0")
+            startActivity(intent)
+        }
+
     }
 
     private fun setImage(position: Int) {
@@ -64,4 +73,6 @@ class TrainingActivity : AppCompatActivity() {
             imageView.setImageResource(exercises[position].getImage())
         }
     }
+
+
 }

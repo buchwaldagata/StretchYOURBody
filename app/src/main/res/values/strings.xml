@@ -11,4 +11,10 @@
     <string name="start">Zaczynamy!</string>
     <string name="next">Następne</string>
     <string name="previous">Poprzednie</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="stoper_start">Start</string>
+    <string name="stoper_stop">Pauza</string>
+    <string name="stoper_reset">Reset</string>
 </resources>

@@ -40,4 +40,8 @@ class Training(private var title: String, private var duration: Int, private var
         exercises.removeAt(index)
         exercisesTime.removeAt(index)
     }
+
+    fun getExerciseTime(index: Int): Int {
+        return exercisesTime[index]
+    }
 }
