@@ -9,6 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stretchyourbody.data.Cwiczenie
 import com.example.stretchyourbody.data.Trening
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.FirebaseDatabase
 
 class AddExercisesToTrainingActivity : AppCompatActivity() {
 
@@ -50,7 +52,7 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")!!
 //        val description = intent.getStringExtra("description")!!
         val level = intent.getStringExtra("level")!!
-
+        FirebaseApp.initializeApp(this)
         // Utworzenie obiektu Training
 
         buttonAddExercise.setOnClickListener {
@@ -145,6 +147,13 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 //        trainings.addTraining(training)
 
 //        TODO: Dodać training do bazy
+
+        val database = FirebaseDatabase.getInstance()
+        val usersRef = database.getReference("users")
+        val newUserRef = usersRef.push()
+        newUserRef.setValue(training)
+
+
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

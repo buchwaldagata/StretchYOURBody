@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class User( val email:String? = null,
                 val uid: String? = null
-                ,val treningi: List<Trening>
+                ,val treningi: MutableList<Trening>
                 ): Serializable {
-        constructor() : this("", "", emptyList())
+        constructor() : this("", "", mutableListOf())
     }
