@@ -12,6 +12,8 @@ import com.example.stretchyourbody.data.Trening
 import com.example.stretchyourbody.data.User
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.io.Serializable
 
 class AddExercisesToTrainingActivity : AppCompatActivity() {
@@ -157,10 +159,15 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
         user.treningi.add(training)
 
-        val database = FirebaseDatabase.getInstance()
-        val usersRef = database.getReference("users")
-        val newUserRef = usersRef.push()
-        newUserRef.setValue(user)
+        val fs = Firebase.firestore
+        fs.collection("users").document(user.uid!!).set(user)
+//        val usersCollection = db.collection("users")
+//        usersCollection.add(user)
+//        val database = FirebaseDatabase.getInstance()
+//        val usersRef = database.getReference("users")
+//        val newUserRef = usersRef.push()
+//        newUserRef.setValue(user)
+//        usersRef.
 
 
 
