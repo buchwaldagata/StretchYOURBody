@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -19,6 +20,8 @@ class AddTrainingActivity : AppCompatActivity() {
     private lateinit var editTextLevel: EditText
     private lateinit var user: Serializable
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_training)
 
@@ -69,5 +72,15 @@ class AddTrainingActivity : AppCompatActivity() {
         }
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -3,6 +3,7 @@ package com.example.stretchyourbody
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -50,6 +51,8 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_exercises_to_training)
 
@@ -215,6 +218,16 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Uzupełnij wszystkie pola", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
