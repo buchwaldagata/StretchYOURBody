@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -35,7 +36,10 @@ class ExerciseActivity : AppCompatActivity() {
         get() = findViewById(R.id.stop_button)
     private val resetButton: Button
         get() = findViewById(R.id.reset_button)
-
+    private val finishButton: Button
+        get() = findViewById(R.id.finishButton)
+    private val skipButton: Button
+        get() = findViewById(R.id.skipButton)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         training = intent.getSerializableExtra("training") as Trening
@@ -63,6 +67,12 @@ class ExerciseActivity : AppCompatActivity() {
             seconds = savedInstanceState.getInt("seconds")
             running = savedInstanceState.getBoolean("running")
             wasRunning = savedInstanceState.getBoolean("wasRunning")
+        }
+
+        skipButton.setOnClickListener{newExercise()}
+        finishButton.setOnClickListener{
+            val intent = Intent(this, FinishTrainingActivity::class.java)
+            startActivity(intent)
         }
 
         runStoper(timeView)
