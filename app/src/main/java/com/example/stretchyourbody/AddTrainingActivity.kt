@@ -7,18 +7,23 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.firestore.auth.User
+import java.io.Serializable
 
 
 class AddTrainingActivity : AppCompatActivity() {
 
+
     private lateinit var editTextName: EditText
 //    private lateinit var editTextDescription: EditText
     private lateinit var editTextLevel: EditText
-
+    private lateinit var user: Serializable
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_training)
 
+        val intent = intent
+        user = intent.getSerializableExtra("user")!!
         editTextName = findViewById(R.id.editTextName)
 //        editTextDescription = findViewById(R.id.editTextDescription)
         editTextLevel= findViewById(R.id.editTextLevel)
@@ -51,7 +56,7 @@ class AddTrainingActivity : AppCompatActivity() {
 
         val intent = Intent(this, AddExercisesToTrainingActivity::class.java)
         intent.putExtra("name", name)
-//        intent.putExtra("description", description)
+        intent.putExtra("user", user)
         intent.putExtra("level", level)
         startActivity(intent)
     }

@@ -9,11 +9,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.stretchyourbody.data.Cwiczenie
 import com.example.stretchyourbody.data.Trening
+import com.example.stretchyourbody.data.User
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.FirebaseDatabase
+import java.io.Serializable
 
 class AddExercisesToTrainingActivity : AppCompatActivity() {
 
+    private lateinit var user: User
     private val spinnerExercises:Spinner
         get() = findViewById(R.id.spinnerExercises)
     private val editTextExerciseDuration:EditText
@@ -43,12 +46,14 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
     private lateinit var training: Trening
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_exercises_to_training)
 
         // Odczytanie danych z poprzedniej aktywności
         val intent = intent
+        user = intent.getSerializableExtra("user")!! as User
         val name = intent.getStringExtra("name")!!
 //        val description = intent.getStringExtra("description")!!
         val level = intent.getStringExtra("level")!!
@@ -87,6 +92,8 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         }
 
     }
+
+
 
     private fun setupSpinner() {
         val exerciseList = exercisesList.getAllExercisesNames().toMutableList()
@@ -148,10 +155,12 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
 //        TODO: Dodać training do bazy
 
+        user.treningi.add(training)
+
         val database = FirebaseDatabase.getInstance()
         val usersRef = database.getReference("users")
         val newUserRef = usersRef.push()
-        newUserRef.setValue(training)
+        newUserRef.setValue(user)
 
 
 
