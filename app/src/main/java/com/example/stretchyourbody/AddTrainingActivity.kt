@@ -13,7 +13,7 @@ class AddTrainingActivity : AppCompatActivity() {
 
     private lateinit var editTextName: EditText
     private lateinit var editTextDescription: EditText
-    private lateinit var editTextDuration: EditText
+//    private lateinit var editTextDuration: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class AddTrainingActivity : AppCompatActivity() {
 
         editTextName = findViewById(R.id.editTextName)
         editTextDescription = findViewById(R.id.editTextDescription)
-        editTextDuration = findViewById(R.id.editTextDuration)
+//        editTextDuration = findViewById(R.id.editTextDuration)
 
         val buttonNext = findViewById<Button>(R.id.buttonNext)
         buttonNext.setOnClickListener {
@@ -36,21 +36,22 @@ class AddTrainingActivity : AppCompatActivity() {
     private fun validateFields(): Boolean {
         val name = editTextName.text.toString().trim()
         val description = editTextDescription.text.toString().trim()
-        val duration = editTextDuration.text.toString().trim()
+//        val duration = editTextDuration.text.toString().trim()
 
-        return name.isNotEmpty() && description.isNotEmpty() && duration.isNotEmpty()
+        return name.isNotEmpty() && description.isNotEmpty()
+//                && duration.isNotEmpty()
     }
 
 
     private fun openAddExercisesActivity() {
         val name = editTextName.text.toString()
         val description = editTextDescription.text.toString()
-        val duration = editTextDuration.text.toString().toInt()
+//        val duration = editTextDuration.text.toString().toInt()
 
         val intent = Intent(this, AddExercisesToTrainingActivity::class.java)
         intent.putExtra("name", name)
         intent.putExtra("description", description)
-        intent.putExtra("duration", duration)
+//        intent.putExtra("duration", duration)
         startActivity(intent)
     }
 

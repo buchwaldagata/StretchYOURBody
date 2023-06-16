@@ -17,13 +17,13 @@
         android:hint="Opis treningu"
         android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/editTextDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Czas trwania (minuty)"
-        android:inputType="number"
-        android:minHeight="48dp" />
+<!--    <EditText-->
+<!--        android:id="@+id/editTextDuration"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Czas trwania (minuty)"-->
+<!--        android:inputType="number"-->
+<!--        android:minHeight="48dp" />-->
 
     <Button
         android:id="@+id/buttonNext"
