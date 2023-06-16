@@ -157,24 +157,12 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
     private fun finishAddingTraining(training: Trening) {
         Log.e("dodawanie", "dziala")
-//        val trainings: TrainingsList = TrainingsList()
-//        trainings.addTraining(training)
 
-//        TODO: Dodać training do bazy
 
         user.treningi.add(training)
 
         val fs = Firebase.firestore
         fs.collection("users").document(user.uid!!).set(user)
-//        val usersCollection = db.collection("users")
-//        usersCollection.add(user)
-//        val database = FirebaseDatabase.getInstance()
-//        val usersRef = database.getReference("users")
-//        val newUserRef = usersRef.push()
-//        newUserRef.setValue(user)
-//        usersRef.
-
-
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
