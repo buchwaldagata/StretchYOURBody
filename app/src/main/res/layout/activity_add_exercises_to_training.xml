@@ -44,19 +44,19 @@
                 android:hint="Tytuł ćwiczenia" />
 
             <EditText
-                android:id="@+id/editTextCustomExerciseDescription"
+                android:id="@+id/editTextCustomExerciseTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Opis ćwiczenia" />
+                android:hint="Czas trwania" />
 
-            <ImageView
-                android:id="@+id/imageViewCustomExercise"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:src="@drawable/default_img"
-                android:scaleType="centerCrop"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageViewCustomExercise"-->
+<!--                android:layout_width="200dp"-->
+<!--                android:layout_height="200dp"-->
+<!--                android:src="@drawable/default_img"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginBottom="16dp" />-->
 
             <Button
                 android:id="@+id/buttonSaveCustomExercise"

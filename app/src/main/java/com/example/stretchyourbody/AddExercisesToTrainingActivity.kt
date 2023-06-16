@@ -33,12 +33,12 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         get() = findViewById(R.id.buttonAddCustomExercise)
     private val buttonSaveCustomExercise:Button
         get() = findViewById(R.id.buttonSaveCustomExercise)
-    private val editTextCustomExerciseDescription:EditText
-        get() = findViewById(R.id.editTextCustomExerciseDescription)
+    private val editTextCustomExerciseTime:EditText
+        get() = findViewById(R.id.editTextCustomExerciseTime)
     private val editTextCustomExerciseTitle:EditText
         get() = findViewById(R.id.editTextCustomExerciseTitle)
-    private val imageViewCustomExercise:ImageView
-        get() = findViewById(R.id.imageViewCustomExercise)
+//    private val imageViewCustomExercise:ImageView
+//        get() = findViewById(R.id.imageViewCustomExercise)
     private val customExerciseLayout: LinearLayout
         get() = findViewById(R.id.customExerciseLayout)
     private val exercisesList = ExercisesList()
@@ -117,6 +117,14 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         exercises.add(Cwiczenie(exerciseName, exerciseDuration))
 
         // Dodanie wiersza z ćwiczeniem do tabeli
+        addExerciseBasic(exerciseDuration, exerciseName)
+
+        editTextExerciseDuration.text.clear()
+        setupSpinner()
+    }
+
+
+    private fun addExerciseBasic(exerciseDuration: Int, exerciseName: String){
         val row = TableRow(this)
 
         val nameTextView = TextView(this)
@@ -136,10 +144,7 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
         tableLayoutExercises.addView(row)
 
-        editTextExerciseDuration.text.clear()
-        setupSpinner()
     }
-
     private fun removeExercise(row: TableRow) {
         // Usunięcie ćwiczenia z obiektu Training
         val index = tableLayoutExercises.indexOfChild(row) - 1 // Pomijamy wiersz nagłówków
@@ -205,14 +210,17 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
     private fun saveCustomExercise() {
         val exerciseTitle = editTextCustomExerciseTitle.text.toString()
-        val exerciseDescription = editTextCustomExerciseDescription.text.toString()
+        val exerciseTime = editTextCustomExerciseTime.text.toString()
 
-        if (exerciseTitle.isNotEmpty() && exerciseDescription.isNotEmpty()) {
-            val exercise = Exercise(exerciseTitle, exerciseDescription, R.drawable.default_img)
-            exercisesList.addExercise(exercise)
+        if (exerciseTitle.isNotEmpty() && exerciseTime.isNotEmpty()) {
+            val exercise = Cwiczenie(exerciseTitle, exerciseTime.toInt())
+            exercises.add(exercise)
+
+            addExerciseBasic(exerciseTime.toInt(), exerciseTitle)
+
             setupSpinner()
             editTextCustomExerciseTitle.text.clear()
-            editTextCustomExerciseDescription.text.clear()
+            editTextCustomExerciseTime.text.clear()
             customExerciseLayout.visibility = View.GONE
             isCustomExerciseFormVisible = false
             Toast.makeText(this, "Dodano własne ćwiczenie", Toast.LENGTH_SHORT).show()
