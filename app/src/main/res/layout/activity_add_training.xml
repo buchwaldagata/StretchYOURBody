@@ -10,12 +10,6 @@
         android:layout_height="wrap_content"
         android:hint="Nazwa treningu" />
 
-<!--    <EditText-->
-<!--        android:id="@+id/editTextDescription"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Opis treningu"-->
-<!--        android:minHeight="48dp" />-->
 
     <EditText
         android:id="@+id/editTextLevel"
@@ -28,6 +22,7 @@
         android:id="@+id/buttonNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/MyButtonStyle"
         android:text="Dalej" />
 
 </LinearLayout>

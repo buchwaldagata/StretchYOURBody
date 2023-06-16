@@ -12,10 +12,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="40dp"
+        style="@style/MyFloatingButtonStyle"
         android:src="@drawable/play_img" />
 
     <androidx.core.widget.NestedScrollView
@@ -69,9 +66,9 @@
 
         <Button
             android:id="@+id/previousButton"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/MyButtonStyle"
             android:text="@string/previous"
             app:backgroundTint="@color/main_color" />
 
@@ -82,7 +79,7 @@
 
         <Button
             android:id="@+id/nextButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="@style/MyButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/next"

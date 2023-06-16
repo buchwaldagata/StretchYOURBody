@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/main_color"
             app:popupTheme="@style/Theme.StretchYOURBody.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -30,14 +30,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/hello_first_fragment"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
+        style="@style/MyFloatingButtonStyle"
         app:srcCompat="@drawable/plus_img" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

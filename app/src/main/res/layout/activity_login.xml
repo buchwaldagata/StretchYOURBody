@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="ZALOGUJ"
-        android:textSize="32dp"
+        style="@style/HeaderView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,12 +25,13 @@
         android:layout_marginTop="200dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:hint= "Email"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/editText_password_login"
@@ -38,18 +39,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="@string/haslo"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/editText_email_login"
         app:layout_constraintStart_toStartOf="@+id/editText_email_login"
-        app:layout_constraintTop_toBottomOf="@+id/editText_email_login"
-        android:hint= "Hasło"/>
+        app:layout_constraintTop_toBottomOf="@+id/editText_email_login" />
 
     <TextView
         android:id="@+id/textView_register_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Brak konta? Zarejestruj teraz!"
+        style="@style/NormalText"
+        android:text="@string/zarejestruj_komunikat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_password_login" />
@@ -59,7 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Zaloguj"
+        android:text="@string/zaloguj"
+        style="@style/MyButtonStyle"
+        android:background="@color/main_color"
         app:layout_constraintEnd_toEndOf="@+id/editText_password_login"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/editText_password_login"

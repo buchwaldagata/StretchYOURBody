@@ -19,4 +19,8 @@
     <string name="stoper_reset">Reset</string>
 
     <string name="select_exercise">Wybierz ćwiczenie</string>
+    <string name="zarejestruj">ZAREJESTRUJ</string>
+    <string name="zaloguj">Zaloguj</string>
+    <string name="zarejestruj_komunikat">Brak konta? Zarejestruj teraz!</string>
+    <string name="haslo">Hasło</string>
 </resources>

@@ -7,23 +7,9 @@
     android:background="@color/main_color"
     tools:context=".Animation">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageview"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:contentDescription="@string/app_name"-->
-<!--        android:src="@drawable/logo" />-->
-
     <com.example.stretchyourbody.CircleView
         android:id="@+id/circleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-<!--    <com.example.stretchyourbody.CustomView-->
-<!--        android:id="@+id/customView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
 
 </RelativeLayout>

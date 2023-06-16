@@ -28,6 +28,7 @@
             android:id="@+id/buttonAddExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/MyButtonStyle"
             android:text="Dodaj ćwiczenie" />
 
         <LinearLayout
@@ -62,6 +63,7 @@
                 android:id="@+id/buttonSaveCustomExercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/MyButtonStyle"
                 android:text="Zapisz ćwiczenie" />
 
         </LinearLayout>
@@ -69,6 +71,7 @@
         <Button
             android:id="@+id/buttonAddCustomExercise"
             android:layout_width="wrap_content"
+            style="@style/MyButtonStyle"
             android:layout_height="wrap_content"
             android:text="Dodaj własne ćwiczenie" />
 
@@ -102,6 +105,7 @@
             android:id="@+id/buttonFinish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/MyButtonStyle"
             android:text="Zakończ" />
 
 
