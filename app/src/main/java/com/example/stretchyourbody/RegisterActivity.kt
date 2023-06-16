@@ -7,8 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.stretchyourbody.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
@@ -58,11 +60,22 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(inputEmail,inputPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, let move to the next activity i.e MainActivity
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                    val db = Firebase.firestore
+                    val user = User(inputEmail, auth.uid, mutableListOf())
+                    db.collection("users").document(auth.uid!!).set(user)
+                        .addOnSuccessListener {
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
 
-                    Toast.makeText(baseContext, "Zarejestrowano", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(baseContext, "Zarejestrowano", Toast.LENGTH_SHORT).show()
+
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText( baseContext, "Nie udało się zarejestrować",
+                                Toast.LENGTH_SHORT).show()
+                        }
+
+
 
                 } else {
                     // If sign in fails, display a message to the user.
