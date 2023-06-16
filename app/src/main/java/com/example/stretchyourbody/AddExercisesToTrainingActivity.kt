@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.stretchyourbody.data.Cwiczenie
 import com.example.stretchyourbody.data.Trening
 
 class AddExercisesToTrainingActivity : AppCompatActivity() {
@@ -36,8 +37,9 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
     private val exercisesList = ExercisesList()
     private var isCustomExerciseFormVisible = false
 
+    var exercises: MutableList<Cwiczenie> = mutableListOf()
 
-    private lateinit var training: Training
+    private lateinit var training: Trening
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,11 +48,10 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         // Odczytanie danych z poprzedniej aktywności
         val intent = intent
         val name = intent.getStringExtra("name")!!
-        val description = intent.getStringExtra("description")!!
-        val duration = intent.getIntExtra("duration", 0)!!
+//        val description = intent.getStringExtra("description")!!
+        val level = intent.getStringExtra("level")!!
 
         // Utworzenie obiektu Training
-        training = Trening(name, duration, description)
 
         buttonAddExercise.setOnClickListener {
             if (validateFields()) {
@@ -61,10 +62,11 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         }
 
         buttonFinish.setOnClickListener {
-            if (training.getExercises().isEmpty()) {
+            if (exercises.isEmpty()) {
                 showAlertDialog("Dodaj co najmniej jedno ćwiczenie!")
             } else {
-                finishAddingTraining()
+                training = Trening(name, level, exercises)
+                finishAddingTraining(training)
             }
         }
 
@@ -100,7 +102,8 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
 
         // Dodanie ćwiczenia do obiektu Training
         // Możesz dostosować indeks w zależności od preferowanej pozycji w tabeli
-        exercisesList.getExercise(exerciseName)?.let { training.addExercise(it, exerciseDuration) }
+//        exercisesList.getExercise(exerciseName)?.let { training.addExercise(it, exerciseDuration) }
+        exercises.add(Cwiczenie(exerciseName, exerciseDuration))
 
         // Dodanie wiersza z ćwiczeniem do tabeli
         val row = TableRow(this)
@@ -129,16 +132,19 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
     private fun removeExercise(row: TableRow) {
         // Usunięcie ćwiczenia z obiektu Training
         val index = tableLayoutExercises.indexOfChild(row) - 1 // Pomijamy wiersz nagłówków
-        training.removeExercise(index)
+//        training.removeExercise(index)
+        exercises.removeAt(index)
 
         // Usunięcie wiersza z tabeli
         tableLayoutExercises.removeView(row)
     }
 
-    private fun finishAddingTraining() {
+    private fun finishAddingTraining(training: Trening) {
         Log.e("dodawanie", "dziala")
-        val trainings: TrainingsList = TrainingsList()
-        trainings.addTraining(training)
+//        val trainings: TrainingsList = TrainingsList()
+//        trainings.addTraining(training)
+
+//        TODO: Dodać training do bazy
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

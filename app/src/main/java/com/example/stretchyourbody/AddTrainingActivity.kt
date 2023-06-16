@@ -12,16 +12,16 @@ import androidx.appcompat.app.AlertDialog
 class AddTrainingActivity : AppCompatActivity() {
 
     private lateinit var editTextName: EditText
-    private lateinit var editTextDescription: EditText
-//    private lateinit var editTextDuration: EditText
+//    private lateinit var editTextDescription: EditText
+    private lateinit var editTextLevel: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_training)
 
         editTextName = findViewById(R.id.editTextName)
-        editTextDescription = findViewById(R.id.editTextDescription)
-//        editTextDuration = findViewById(R.id.editTextDuration)
+//        editTextDescription = findViewById(R.id.editTextDescription)
+        editTextLevel= findViewById(R.id.editTextLevel)
 
         val buttonNext = findViewById<Button>(R.id.buttonNext)
         buttonNext.setOnClickListener {
@@ -35,23 +35,24 @@ class AddTrainingActivity : AppCompatActivity() {
 
     private fun validateFields(): Boolean {
         val name = editTextName.text.toString().trim()
-        val description = editTextDescription.text.toString().trim()
-//        val duration = editTextDuration.text.toString().trim()
+//        val description = editTextDescription.text.toString().trim()
+        val level = editTextLevel.text.toString().trim()
 
-        return name.isNotEmpty() && description.isNotEmpty()
-//                && duration.isNotEmpty()
+        return name.isNotEmpty()
+//                && description.isNotEmpty()
+                && level.isNotEmpty()
     }
 
 
     private fun openAddExercisesActivity() {
         val name = editTextName.text.toString()
-        val description = editTextDescription.text.toString()
-//        val duration = editTextDuration.text.toString().toInt()
+//        val description = editTextDescription.text.toString()
+        val level = editTextLevel.text.toString()
 
         val intent = Intent(this, AddExercisesToTrainingActivity::class.java)
         intent.putExtra("name", name)
-        intent.putExtra("description", description)
-//        intent.putExtra("duration", duration)
+//        intent.putExtra("description", description)
+        intent.putExtra("level", level)
         startActivity(intent)
     }
 

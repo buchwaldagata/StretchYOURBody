@@ -10,20 +10,19 @@
         android:layout_height="wrap_content"
         android:hint="Nazwa treningu" />
 
-    <EditText
-        android:id="@+id/editTextDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Opis treningu"
-        android:minHeight="48dp" />
-
 <!--    <EditText-->
-<!--        android:id="@+id/editTextDuration"-->
+<!--        android:id="@+id/editTextDescription"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Czas trwania (minuty)"-->
-<!--        android:inputType="number"-->
+<!--        android:hint="Opis treningu"-->
 <!--        android:minHeight="48dp" />-->
+
+    <EditText
+        android:id="@+id/editTextLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Poziom trudności"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/buttonNext"
