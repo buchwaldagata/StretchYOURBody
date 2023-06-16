@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.stretchyourbody.data.Trening
 
 class AddExercisesToTrainingActivity : AppCompatActivity() {
 
@@ -49,7 +50,7 @@ class AddExercisesToTrainingActivity : AppCompatActivity() {
         val duration = intent.getIntExtra("duration", 0)!!
 
         // Utworzenie obiektu Training
-        training = Training(name, duration, description)
+        training = Trening(name, duration, description)
 
         buttonAddExercise.setOnClickListener {
             if (validateFields()) {

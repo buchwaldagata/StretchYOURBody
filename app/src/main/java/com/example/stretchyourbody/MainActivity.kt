@@ -18,10 +18,13 @@ import com.example.stretchyourbody.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var dbRef: DatabaseReference
 
     private val addButton: FloatingActionButton
         get() = findViewById(R.id.add_button)
@@ -69,6 +72,9 @@ class MainActivity : AppCompatActivity() {
                 Log.d("REPO_DEBUG", it.message.toString())
             }
 
+        dbRef = FirebaseDatabase.getInstance().getReference("users")
+
+
 
 
 
@@ -81,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddTrainingActivity::class.java)
             startActivity(intent)
         }
+
 
 
 
