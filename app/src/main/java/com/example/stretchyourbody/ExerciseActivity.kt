@@ -110,7 +110,7 @@ class ExerciseActivity : AppCompatActivity() {
             intent.putExtra("exerciseIndex", (index+1).toString())
             startActivity(intent)
         } else {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, FinishTrainingActivity::class.java)
             startActivity(intent)
         }
     }
